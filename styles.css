@@ -17,6 +17,7 @@ body {
   background: linear-gradient(135deg, var(--cream), #e4d3c1);
   color: var(--dark-brown);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .page-shell {
@@ -139,7 +140,7 @@ main {
 .discussion-layout {
   display: grid;
   gap: 20px;
-  grid-template-columns: 1fr 1.3fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
 }
 
 .discussion-card {
@@ -147,6 +148,9 @@ main {
   border-radius: 20px;
   padding: 24px;
   box-shadow: 0 10px 25px var(--shadow);
+  min-width: 0;
+  width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .discussion-intro {
@@ -249,7 +253,8 @@ main {
   }
 
   .discussion-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    display: grid;
   }
 
   .projects-grid {
@@ -298,6 +303,10 @@ main {
   .comment-meta {
     flex-direction: column;
     gap: 4px;
+  }
+
+  .comment-item {
+    overflow-wrap: anywhere;
   }
 
   .button {
