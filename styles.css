@@ -27,7 +27,7 @@ body {
 
 .hero {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   gap: 24px;
   align-items: center;
   background: linear-gradient(135deg, var(--turquoise), var(--teal));
@@ -35,6 +35,11 @@ body {
   border-radius: 24px;
   padding: 36px;
   box-shadow: 0 18px 40px var(--shadow);
+  overflow: hidden;
+}
+
+.hero-content {
+  min-width: 0;
 }
 
 .eyebrow {
@@ -71,6 +76,8 @@ h3 {
   font-weight: 700;
   border-radius: 999px;
   transition: transform 0.2s ease;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .button:hover {
@@ -83,9 +90,10 @@ h3 {
 }
 
 .hero-image {
-  width: 100%;
+  width: min(100%, 300px);
   max-width: 300px;
   height: auto;
+  aspect-ratio: 1;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -237,7 +245,7 @@ main {
 
 @media (max-width: 800px) {
   .hero {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .projects-grid {
@@ -257,13 +265,28 @@ main {
     padding: 18px;
   }
 
+  .hero {
+    padding: 20px;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .hero-image {
-    width: min(72vw, 220px);
-    max-width: 220px;
+    width: min(60vw, 170px);
+    max-width: 170px;
     margin: 0 auto;
   }
 
+  .hero h1,
+  .hero-text {
+    max-width: 100%;
+  }
+
   .button {
+    display: block;
     width: 100%;
     text-align: center;
   }
