@@ -108,6 +108,10 @@ main {
   box-shadow: 0 10px 25px var(--shadow);
 }
 
+.contact {
+  margin-top: 24px;
+}
+
 .discussion-hero {
   margin-bottom: 24px;
 }
