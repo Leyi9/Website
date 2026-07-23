@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H.Stitch Project | Discussion Thread</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero discussion-hero">
+        <div class="hero-content">
+          <p class="eyebrow">Community • Kindness • Conversation</p>
+          <h1>Share a note with the H.Stitch Project community</h1>
+          <p class="hero-text">
+            Leave a comment, share encouragement, or talk about a crochet idea you’d love to see.
+            This thread is here to help the community connect and celebrate handmade care.
+          </p>
+          <a class="button" href="index.html">Back to home</a>
+        </div>
+
+        <div class="hero-card">
+          <h2>Thread highlights</h2>
+          <ul>
+            <li>Leave a thoughtful comment</li>
+            <li>See what others are sharing</li>
+            <li>Keep the conversation going</li>
+          </ul>
+        </div>
+      </header>
+
+      <main class="discussion-layout">
+        <section class="discussion-card">
+          <h2>Leave a comment</h2>
+          <p class="discussion-intro">
+            Your note will be saved in this browser so the conversation stays visible for later visits.
+          </p>
+          <form id="comment-form" class="comment-form">
+            <input id="name" type="text" placeholder="Your name" required />
+            <textarea id="message" placeholder="Write your comment here..." required></textarea>
+            <button class="button" type="submit">Post comment</button>
+          </form>
+        </section>
+
+        <section class="discussion-card">
+          <div class="thread-header">
+            <h2>Discussion thread</h2>
+            <p id="comment-count">0 comments</p>
+          </div>
+          <div id="comment-list" class="comment-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const STORAGE_KEY = "hstitch-discussion-comments";
+      const starterComments = [];
+
+      const form = document.getElementById("comment-form");
+      const nameInput = document.getElementById("name");
+      const messageInput = document.getElementById("message");
+      const commentList = document.getElementById("comment-list");
+      const commentCount = document.getElementById("comment-count");
+
+      function loadComments() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          if (!saved) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(starterComments));
+            return starterComments;
+          }
+          return JSON.parse(saved);
+        } catch (error) {
+          console.warn("Could not load comments:", error);
+          return starterComments;
+        }
+      }
+
+      function saveComments(comments) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+      }
+
+      function renderComments() {
+        const comments = loadComments();
+        if (!comments.length) {
+          commentList.innerHTML = '<p class="empty-state">No comments yet. Be the first to share something kind.</p>';
+        } else {
+          commentList.innerHTML = comments
+            .map((comment, index) => `
+              <article class="comment-item">
+                <div class="comment-meta">
+                  <strong>${comment.name}</strong>
+                  <span>${comment.timestamp}</span>
+                </div>
+                <p>${comment.message}</p>
+                <button class="delete-button" type="button" data-index="${index}">Delete</button>
+              </article>
+            `)
+            .join("");
+        }
+
+        commentCount.textContent = `${comments.length} ${comments.length === 1 ? "comment" : "comments"}`;
+      }
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const comments = loadComments();
+        comments.unshift({
+          name: nameInput.value.trim() || "Anonymous",
+          message: messageInput.value.trim(),
+          timestamp: "Just now"
+        });
+
+        saveComments(comments);
+        form.reset();
+        renderComments();
+      });
+
+      commentList.addEventListener("click", (event) => {
+        const deleteButton = event.target.closest(".delete-button");
+        if (!deleteButton) return;
+
+        const comments = loadComments();
+        const index = Number(deleteButton.getAttribute("data-index"));
+        comments.splice(index, 1);
+        saveComments(comments);
+        renderComments();
+      });
+
+      renderComments();
+    </script>
+  </body>
+</html>

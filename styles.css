@@ -1,0 +1,248 @@
+:root {
+  --turquoise: #2ec4b6;
+  --teal: #1f6f6b;
+  --cream: #f7efe8;
+  --brown: #7a4b2f;
+  --dark-brown: #4d2d1e;
+  --shadow: rgba(77, 45, 30, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, var(--cream), #e4d3c1);
+  color: var(--dark-brown);
+  line-height: 1.6;
+}
+
+.page-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: center;
+  background: linear-gradient(135deg, var(--turquoise), var(--teal));
+  color: white;
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 18px 40px var(--shadow);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin-bottom: 12px;
+}
+
+.hero-text {
+  max-width: 560px;
+  font-size: 1.05rem;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 20px;
+  background: var(--cream);
+  color: var(--dark-brown);
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 999px;
+  transition: transform 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button.secondary {
+  background: var(--brown);
+  color: white;
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.hero-card ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+main {
+  margin-top: 24px;
+}
+
+.intro,
+.contact {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px var(--shadow);
+}
+
+.discussion-hero {
+  margin-bottom: 24px;
+}
+
+.discussion-layout {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1.3fr;
+}
+
+.discussion-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 25px var(--shadow);
+}
+
+.discussion-intro {
+  margin-top: -6px;
+  color: var(--brown);
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comment-form input,
+.comment-form textarea {
+  border: 1px solid #e4cdbb;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--dark-brown);
+  background: var(--cream);
+}
+
+.comment-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.thread-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comment-item {
+  border: 1px solid #f0dfcf;
+  border-radius: 14px;
+  padding: 14px;
+  background: linear-gradient(135deg, #fffdfa, #f9efe8);
+}
+
+.delete-button {
+  margin-top: 10px;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: var(--brown);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.delete-button:hover {
+  opacity: 0.9;
+}
+
+.comment-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--teal);
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.empty-state {
+  color: var(--brown);
+  font-style: italic;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.project-card {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 25px var(--shadow);
+  border-top: 6px solid var(--turquoise);
+}
+
+.project-card h3 {
+  color: var(--teal);
+}
+
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-shell {
+    padding: 14px;
+  }
+
+  .hero,
+  .intro,
+  .contact,
+  .project-card {
+    padding: 18px;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+}
