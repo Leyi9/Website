@@ -248,6 +248,10 @@ main {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .discussion-layout {
+    grid-template-columns: 1fr;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -261,7 +265,8 @@ main {
   .hero,
   .intro,
   .contact,
-  .project-card {
+  .project-card,
+  .discussion-card {
     padding: 18px;
   }
 
@@ -283,6 +288,16 @@ main {
   .hero h1,
   .hero-text {
     max-width: 100%;
+  }
+
+  .thread-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .comment-meta {
+    flex-direction: column;
+    gap: 4px;
   }
 
   .button {
