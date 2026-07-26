@@ -338,36 +338,44 @@ main {
   color: var(--teal);
 }
 
+.project-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  display: block;
+}
+
 .archive-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .archive-card {
   background: white;
   border-radius: 20px;
-  padding: 20px;
+  padding: 10px;
   box-shadow: 0 10px 25px var(--shadow);
 }
 
 .archive-image {
-  display: grid;
-  place-items: center;
-  min-height: 220px;
-  margin-bottom: 14px;
-  border-radius: 16px;
-  border: 2px dashed var(--turquoise);
-  background: linear-gradient(135deg, #fdf7f1, #f3e5d8);
-  color: var(--teal);
-  font-weight: 700;
-  text-align: center;
-  padding: 16px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  display: block;
 }
 
 .archive-card h3 {
   color: var(--teal);
-  margin-bottom: 8px;
+  margin: 0 0 4px 0;
+  font-size: 0.95rem;
+}
+
+.archive-card p {
+  margin: 0;
+  font-size: 0.85rem;
 }
 
 @media (max-width: 900px) {
