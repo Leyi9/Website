@@ -383,7 +383,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 20px;
+    text-align: center;
   }
 
   .hero-content,
@@ -394,6 +396,8 @@ main {
 
   .stat-circle {
     margin: 0 auto;
+    align-self: center;
+    justify-self: center;
   }
 
   .discussion-layout {
@@ -433,6 +437,9 @@ main {
   .hero-content {
     width: 100%;
     max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-image {
