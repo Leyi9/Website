@@ -382,7 +382,7 @@ main {
   .hero {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 20px;
   }
 
@@ -390,6 +390,10 @@ main {
   .hero-card {
     width: 100%;
     max-width: 100%;
+  }
+
+  .stat-circle {
+    margin: 0 auto;
   }
 
   .discussion-layout {
